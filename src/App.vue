@@ -1,32 +1,97 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <nav>
+    <v-app>
+      <v-app-bar app color="n" elevation="5">
+        <div class="nav-div">
+          <v-row>
+            <v-col>
+              <v-toolbar-title>
+                <span>AMALITECH</span>
+                <span>-VIRTUAL</span>
+              </v-toolbar-title>
+            </v-col>
+            <!-- <v-spacer></v-spacer> -->
+
+            <v-col class="text-right">
+              <v-btn
+                color="bgColor"
+                class="white--text rounded-lg btn login"
+                style="text-transform: capitalize;"
+                :style="{
+                  backgroundColor: changeBackgroundColor
+                    ? '#e05729 !important'
+                    : '',
+                  color: changeBackgroundColor ? 'white !important' : 'black',
+                  textTransform: 'capitalize'
+                }"
+                small
+                depressed
+              >
+                <span>{{ capitalizeFirstBtnName }}</span>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </div>
+      </v-app-bar>
+
+      <v-main>
+        <router-view />
+      </v-main>
+    </v-app>
+  </nav>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  name: "App",
+
+  data() {
+    return {
+      btnName: "Login",
+      changeBackgroundColor: true,
+    };
+  },
+
+  computed: {
+    capitalizeFirstBtnName() {
+      // console.log(
+      //   this.btnName.charAt(0).toUpperCase() +
+      //     this.btnName.slice(1).toLowerCase()
+      // );
+      return (
+        this.btnName.charAt(0).toLowerCase() +
+        this.btnName.slice(1).toLowerCase()
+      );
+    },
+  },
+};
+</script>
+
+<style scoped>
+.bgColor {
+  background: #c75532;
 }
 
-#nav {
-  padding: 30px;
+.nav-div {
+  margin: 0 auto;
+  width: 90%;
+  /* background: rgb(218, 211, 211); */
+  /* border: solid 1px black; */
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+/* Media queries */
+@media screen and (max-width:380px) {
+
+    .nav-div{
+     width: 100%;
+         
+    }
+
+    .nav-div > .row{
+        display: flex;
+    }
+
+    
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
