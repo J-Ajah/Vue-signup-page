@@ -6,8 +6,8 @@
           <v-row>
             <v-col>
               <v-toolbar-title>
-                <span>AMALITECH</span>
-                <span>-VIRTUAL</span>
+                <span>Simple</span>
+                <span>-Sign up</span>
               </v-toolbar-title>
             </v-col>
             <!-- <v-spacer></v-spacer> -->
